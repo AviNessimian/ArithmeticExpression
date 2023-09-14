@@ -1,29 +1,23 @@
-using ArithmeticExpression.Api.Calculator;
-using ArithmeticExpression.Api.Calculator.Handlers;
 
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore;
+using ArithmeticExpression.Host;
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+namespace ArithmeticExpression.Host;
 
-
-var handlersChain = new ParenthesesHandler(new MultiplyHandler(
-    new DivisionHandler(
-        new AdditionHandler(
-            new SubtractionHandler(null)))));
-
-
-builder.Services.AddSingleton<ICalculatorHandler>(handlersChain);
-
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+public class Program
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    public static void Main(string[] args)
+    {
+        var host = CreateWebHostBuilder(args);
+        IWebHost webhost = host.Build();
+        webhost.Run();
+    }
 
-app.UseAuthorization();
-app.MapControllers();
-app.Run();
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var webHostBuilder = WebHost.CreateDefaultBuilder(args);
+        webHostBuilder.UseStartup<Startup>();
+        return webHostBuilder;
+    }
+}

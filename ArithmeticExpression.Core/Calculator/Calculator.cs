@@ -1,23 +1,18 @@
 ﻿using ArithmeticExpression.Core.Abstractions;
 using ArithmeticExpression.Core.Operators;
+using Microsoft.Extensions.Logging;
 using System.Text;
 
 namespace ArithmeticExpression.Core.Calculator;
 
-/*
-var expression = "200+100-100*4-200/10"; // 10
-var calculator = new Calculator();
-var result = calculator.Evaluate(expression);
-Console.WriteLine(result);
-
-Console.ReadLine();
- */
-public class Calculator
+public class Calculator : ICalculator
 {
+    private readonly ILogger<Calculator> _logger;
     public readonly ICalculatorOperators _operators;
 
-    public Calculator(ICalculatorOperators operators)
+    public Calculator(ILogger<Calculator> logger, ICalculatorOperators operators)
     {
+        _logger = logger;
         _operators = operators;
     }
 
@@ -27,6 +22,13 @@ public class Calculator
         {
             return 0;
         }
+
+        if (expression.Length > 200)
+        {
+            throw new ArgumentException("Expression length is to long");
+        }
+
+        _logger.LogInformation("Evaluating expression: {Expression}", expression);
 
         var numbersStack = new Stack<double>();
         var operatorsStack = new Stack<char>();
@@ -65,7 +67,13 @@ public class Calculator
             ApplyOperation(numbersStack, operatorsStack);
         }
 
-        return numbersStack.Pop();
+        var result =  numbersStack.Pop();
+
+        _logger.LogInformation(
+            "Evaluation result: {Result}, expression: {Expression}",
+            result, expression);
+
+        return result;
     }
 
     private void ApplyOperation(Stack<double> numbers, Stack<char> operators)
@@ -77,6 +85,6 @@ public class Calculator
         numbers.Push(opResult);
     }
 
-    private static bool IsValidDigit(char character) 
+    private static bool IsValidDigit(char character)
         => char.IsDigit(character) || character == '.';
 }
