@@ -22,7 +22,7 @@ public class CalculatorOperators : ICalculatorOperators
     {
         if (_operators.TryGetValue(operation, out var value))
         {
-            return value?.Order ?? 0;
+            return value.Order;
         }
 
         return 0;

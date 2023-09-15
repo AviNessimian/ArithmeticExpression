@@ -1,6 +1,6 @@
 ﻿namespace ArithmeticExpression.Core.Abstractions;
 
-public abstract class Operator
+public abstract class Operator : IOperator
 {
     public abstract char Symbol { get; }
     public abstract int Order { get; }
@@ -17,6 +17,8 @@ public abstract class Operator
             &&
             Order == op.Order;
     }
+
+    public abstract double Execute(double num1, double num2);
 
     public override int GetHashCode()
     {
