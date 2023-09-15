@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E371A801-F6A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{78FFAC93-EE3B-458E-BD38-13E46E3C4774}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D4B21EEC-1896-47C8-AC3B-FC5E995FD3A5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArithmeticExpression.UnitTests", "ArithmeticExpression.UnitTests\ArithmeticExpression.UnitTests.csproj", "{9CB446A3-A37D-40A1-9215-40FB9F2F5815}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArithmeticExpression.IntegrationTests", "ArithmeticExpression.IntegrationTests\ArithmeticExpression.IntegrationTests.csproj", "{6E563A1F-F45D-48C8-A668-CE3F798E70A1}"
