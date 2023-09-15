@@ -12,6 +12,15 @@ public sealed class CalculatorUnitTests
     public CalculatorUnitTests()
     {
         _operators = new Mock<IEnumerable<IOperator>>();
+        var ops = new List<IOperator>
+        {
+             new AdditionOperator(),
+             new SubtractionOperator(),
+             new MultiplicationOperator(),
+             new DivisionOperator()
+        };
+
+        _operators.Setup(_ => _.GetEnumerator()).Returns(ops.GetEnumerator());
         _logger = new Mock<ILogger<Calculator>>();
     }
 
@@ -42,17 +51,7 @@ public sealed class CalculatorUnitTests
     [InlineData("3.5+12.3 ", 15.8)]
     [InlineData("0.5*8 ", 4)]
     public void Evaluate_ArithmeticOperations_ShouldReturnSuccess(string expression, double result)
-    {
-        var ops = new List<IOperator>
-        {
-             new AdditionOperator(),
-             new SubtractionOperator(),
-             new MultiplicationOperator(),
-             new DivisionOperator()
-        };
-
-        _operators.Setup(_ => _.GetEnumerator()).Returns(ops.GetEnumerator());
-
+    { 
         var calculator = new Calculator(_logger.Object, _operators.Object);
         var output = calculator.Evaluate(expression);
 
