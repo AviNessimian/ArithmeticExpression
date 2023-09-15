@@ -45,7 +45,7 @@ RUN rm -rf "appsettings.Development.json"
 
 COPY --from=angular-build /app/dist ./wwwroot
 
-ENV ASPNETCORE_URLS "http://+:80"
+ENV ASPNETCORE_URLS "http://+:5191"
 
 ENTRYPOINT ["dotnet", "ArithmeticExpression.Host.dll"]
 
