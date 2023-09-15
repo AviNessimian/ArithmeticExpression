@@ -1,48 +1,26 @@
+using ArithmeticExpression.Core.Calculator;
 using ArithmeticExpression.Host;
 using ArithmeticExpression.IntegrationTests.Setup;
 
 namespace ArithmeticExpression.IntegrationTests;
 
+
 public class GetUsersIntegrationTests : TestingCaseFixture<Startup>, IDisposable
 {
-    //[Fact(DisplayName = "Get users with pagination")]
-    //public async Task Get_CCC_ShouldReturnCCC()
-    //{
-    //    // Arrange
-    //    var skipCount = 0;
-    //    var pageSize = 1;
+    [Fact(DisplayName = "Post calculator - valid request with mixed operators")]
+    public async Task Post_CalculationExpressionRequest_ShouldReturnSuccessWithCorrectResult()
+    {        
+        var expression = "2+3*8-90/3";
 
-    //    // Act
-    //    var getUserResponse = await Client.GetAsync($"/api/Users?skip={skipCount}&pageSize={pageSize}");
-    //    var json = await getUserResponse.Content.ReadAsStringAsync();
-    //    var users = JsonConvert.DeserializeObject<List<UserEntity>>(json);
+        var httpResMsg = await Client.PostAsJsonAsync("/api/calculator", expression);
+        httpResMsg.Should().NotBeNull();
+        httpResMsg.StatusCode.Should().Be(HttpStatusCode.OK);
 
-    //    // Assert
-    //    getUserResponse.StatusCode.Should().Be(HttpStatusCode.OK);
-    //    users.Should().NotBeNullOrEmpty();
-    //    users.Should().HaveCount(pageSize);
-    //}
+        var response = await httpResMsg.Content.ReadAsAsync<CalculationResponse>();
 
-    //    [Fact(DisplayName = "Get user with subjectId")]
-    //    public async Task Get_ExistentUserWithSubjectId_ShouldReturnSubjectIdResult()
-    //    {
-    //        // Act & Arrange
-    //        var userToCreate = UserFactory.CreateLocalUser(
-    //            email: $"{Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10)}@scuticode.com",
-    //            password: "Um123456&",
-    //            givenName: "givenName",
-    //            familyName: "familyName");
+        response.IsSuccess.Should().BeTrue();
+        response.Error.Should().BeNullOrEmpty();
 
-    //        await UserWriteRepository.AddAsync(userToCreate);
-
-    //        var getUserById = await Client.GetAsync($"/api/Users/{userToCreate.SubjectId}");
-    //        var json = await getUserById.Content.ReadAsStringAsync();
-    //        var actualUser = JsonConvert.DeserializeObject<UserEntity>(json) ?? new();
-
-    //        // Assert
-    //        getUserById.StatusCode.Should().Be(HttpStatusCode.OK);
-    //        getUserById.Should().NotBeNull();
-    //        actualUser.SubjectId.Should().Be(userToCreate.SubjectId);
-    //        actualUser.Email.Should().Be(userToCreate.Email);
-    //    }
+        response.Result.Should().Be(-4);
+    }
 }

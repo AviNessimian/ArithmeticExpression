@@ -1,5 +1,4 @@
 ﻿using ArithmeticExpression.Core.Abstractions;
-using ArithmeticExpression.Core.Operators;
 using Microsoft.Extensions.Logging;
 using System.Text;
 
@@ -83,8 +82,8 @@ public class Calculator : ICalculator
 
     private static bool IsInValidExpression(string expression)
     {
-        return string.IsNullOrWhiteSpace(expression) 
-            || expression.Length <= 2 
+        return string.IsNullOrWhiteSpace(expression)
+            || expression.Length <= 2
             || expression.Length > 200;
     }
 
