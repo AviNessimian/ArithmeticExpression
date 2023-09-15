@@ -14,7 +14,6 @@ public static class ServiceCollactionExtension
             .AddSingleton<IOperator, MultiplicationOperator>()
             .AddSingleton<IOperator, DivisionOperator>();
 
-        services.AddSingleton<ICalculatorOperators, CalculatorOperators>();
         services.AddTransient<ICalculator, Calculator>();
 
         return services;

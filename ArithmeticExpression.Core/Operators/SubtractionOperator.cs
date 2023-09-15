@@ -2,10 +2,10 @@
 
 namespace ArithmeticExpression.Core.Operators;
 
-public class SubtractionOperator : Operator
+public class SubtractionOperator : IOperator
 {
-    public override char Symbol => '-';
-    public override int Order => 1;
+    public char Symbol => '-';
+    public int Precedence => 1;
 
-    public override double Execute(double num1, double num2) => num1 - num2;
+    public double Execute(double num1, double num2) => num1 - num2;
 }

@@ -2,10 +2,10 @@
 
 namespace ArithmeticExpression.Core.Operators;
 
-public class MultiplicationOperator : Operator
+public class MultiplicationOperator : IOperator
 {
-    public override char Symbol => '*';
-    public override int Order => 2;
+    public char Symbol => '*';
+    public int Precedence => 2;
 
-    public override double Execute(double num1, double num2) => num1 * num2;
+    public double Execute(double num1, double num2) => num1 * num2;
 }

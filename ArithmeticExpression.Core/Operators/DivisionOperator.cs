@@ -2,10 +2,10 @@
 
 namespace ArithmeticExpression.Core.Operators;
 
-public class DivisionOperator : Operator
+public class DivisionOperator : IOperator
 {
-    public override char Symbol => '/';
-    public override int Order => 2;
+    public char Symbol => '/';
+    public int Precedence => 2;
 
-    public override double Execute(double op1, double op2) => op1 / op2;
+    public double Execute(double op1, double op2) => op1 / op2;
 }
