@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.33808.371
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArithmeticExpression.Host", "ArithmeticExpression.Api\ArithmeticExpression.Host.csproj", "{C0F5A415-25C3-4499-BC2F-F3EC857C4B39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticExpression.Core", "ArithmeticExpression.Core\ArithmeticExpression.Core.csproj", "{34F87C79-C9AC-402E-98C4-0F0928B3EA75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArithmeticExpression.Core", "ArithmeticExpression.Core\ArithmeticExpression.Core.csproj", "{34F87C79-C9AC-402E-98C4-0F0928B3EA75}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E371A801-F6A8-46E1-B5D0-1BD942C450FA}"
 EndProject
@@ -13,15 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{78FFAC93
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D4B21EEC-1896-47C8-AC3B-FC5E995FD3A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticExpression.UnitTests", "ArithmeticExpression.UnitTests\ArithmeticExpression.UnitTests.csproj", "{9CB446A3-A37D-40A1-9215-40FB9F2F5815}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArithmeticExpression.UnitTests", "ArithmeticExpression.UnitTests\ArithmeticExpression.UnitTests.csproj", "{9CB446A3-A37D-40A1-9215-40FB9F2F5815}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticExpression.IntegrationTests", "ArithmeticExpression.IntegrationTests\ArithmeticExpression.IntegrationTests.csproj", "{6E563A1F-F45D-48C8-A668-CE3F798E70A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArithmeticExpression.IntegrationTests", "ArithmeticExpression.IntegrationTests\ArithmeticExpression.IntegrationTests.csproj", "{6E563A1F-F45D-48C8-A668-CE3F798E70A1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7C11636E-FA1B-45EF-BB90-91EE8BB70098}"
 	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
 		Dockerfile = Dockerfile
-		tests.Dockerfile = tests.Dockerfile
 	EndProjectSection
 EndProject
 Global

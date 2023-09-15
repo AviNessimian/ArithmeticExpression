@@ -1,7 +1,14 @@
-﻿namespace ArithmeticExpression.Core.Calculator
+﻿namespace ArithmeticExpression.Core.Calculator;
+
+public interface ICalculator
 {
-    public interface ICalculator
-    {
-        double Evaluate(string expression);
-    }
+    CalculationResponse Evaluate(string expression);
+}
+
+
+public class CalculationResponse
+{
+    public required bool IsSuccess { get; set; }
+    public string Error { get; set; }
+    public double Result { get; set; }
 }

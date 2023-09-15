@@ -16,16 +16,17 @@ public class Calculator : ICalculator
         _operators = operators;
     }
 
-    public double Evaluate(string expression)
+    public CalculationResponse Evaluate(string expression)
     {
-        if (string.IsNullOrWhiteSpace(expression) || expression.Length <= 2)
+        if (IsInValidExpression(expression))
         {
-            return 0;
-        }
+            _logger.LogInformation("invalid expression length: {Expression}", expression);
 
-        if (expression.Length > 200)
-        {
-            throw new ArgumentException("Expression length is to long");
+            return new CalculationResponse
+            {
+                IsSuccess = false,
+                Error = "invalid expression length"
+            }; ;
         }
 
         _logger.LogInformation("Evaluating expression: {Expression}", expression);
@@ -67,13 +68,24 @@ public class Calculator : ICalculator
             ApplyOperation(numbersStack, operatorsStack);
         }
 
-        var result =  numbersStack.Pop();
+        var result = numbersStack.Pop();
 
         _logger.LogInformation(
             "Evaluation result: {Result}, expression: {Expression}",
             result, expression);
 
-        return result;
+        return new CalculationResponse
+        {
+            IsSuccess = true,
+            Result = result
+        };
+    }
+
+    private static bool IsInValidExpression(string expression)
+    {
+        return string.IsNullOrWhiteSpace(expression) 
+            || expression.Length <= 2 
+            || expression.Length > 200;
     }
 
     private void ApplyOperation(Stack<double> numbers, Stack<char> operators)

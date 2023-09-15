@@ -1,4 +1,5 @@
 ﻿using ArithmeticExpression.Core.Calculator;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ArithmeticExpression.Host.Api;
 
@@ -6,7 +7,10 @@ public static class ApiRouteHandlersExtension
 {
     public static RouteHandlerBuilder MapCalculatorRoute(this IEndpointRouteBuilder endpoints)
     {
-        return endpoints.MapPost("/api/Calculator", (string expression, ILoggerFactory loggerFactory, ICalculator calculator) =>
+        return endpoints.MapPost("/api/calculator", 
+            ([FromBody] string expression, 
+            ILoggerFactory loggerFactory, 
+            ICalculator calculator) =>
         {
             try
             {
