@@ -1,6 +1,6 @@
 namespace ArithmeticExpression.UnitTests
 {
-    public class UnitTest1
+    public class OperatorsUnitTests
     {
         [Fact]
         public void Test1()

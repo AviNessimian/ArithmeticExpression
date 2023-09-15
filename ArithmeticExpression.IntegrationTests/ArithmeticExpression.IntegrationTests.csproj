@@ -28,7 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\ArithmeticExpression.Api\ArithmeticExpression.Host.csproj" />
+	  <ProjectReference Include="..\ArithmeticExpression.Host\ArithmeticExpression.Host.csproj" />
 	</ItemGroup>
 
 </Project>
