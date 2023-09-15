@@ -26,7 +26,5 @@ public static class ApiRouteHandlersExtension
         })
        .WithName("Calculator")
        .WithOpenApi();
-
-     
     }
 }
