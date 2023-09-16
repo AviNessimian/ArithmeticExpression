@@ -1,0 +1,53 @@
+<div class="mb-3">
+    <a class="btn btn-dark mb-3" routerLink="/home">Exit</a>
+
+    <table id="table text-center">
+        <tr>
+            <td colspan="3">
+                <input type="text" class="form-control" placeholder="0" [(ngModel)]="expression" disabled>
+            </td>
+            <td><input type="button" class="btn btn-outline-dark  w-100" value="c" (click)="clear()"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="1" (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="2" (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="3" (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="/" (click)="addChar($event)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="4" (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="5" (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="6" (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="*" (click)="addChar($event)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="7" (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="8" (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="9" (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="-" (click)="addChar($event)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="0" (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="." (click)="addChar($event)"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="=" (click)="evaluate()"></td>
+            <td><input type="button" class="btn btn-outline-dark w-100" value="+" (click)="addChar($event)"></td>
+        </tr>
+    </table>
+
+    <input type="text" class="form-control pt-3" placeholder="Result" [(ngModel)]="result" disabled>
+
+    <div *ngIf="history && history.length > 0" class="pt-3">
+        <h5>History:</h5>
+        <div class="overflow-auto bg-light calc-history">
+
+            <div *ngFor="let h of history">
+                {{h}}
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

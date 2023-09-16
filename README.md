@@ -14,7 +14,7 @@ This document outlines the principles and reasons behind my calculator implement
 #### Operator Stack: Another stack is used for operators. Operators encountered in the expression are pushed onto this stack. Using an operator stack ensures that we can perform operations in the correct order of precedence.
 
 #### Calculating the Result:
-Operator Precedence: To ensure the correct order of operations, the operator stack is consulted to determine if the current operator has higher precedence than the operator at the top of the stack.
+Operator Precedence: To ensure the correct order of operations, the operator stack is consulted to determine if the operator at the top the of the stack has higher precedence than current operator.
 If so, the operator at the top of the stack is popped and applied to the top two numbers on the number stack.
 
 
