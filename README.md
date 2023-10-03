@@ -1,10 +1,11 @@
 ﻿
 # Full Stack Development Home Assignment
 
-### [Assignment.pdf](Assignment.pdf)
+### [Arithmetic Expression Assignment](Assignment.pdf)
 
 
 ## Calculator Implementation
+![Alt text](Screenshot.png)
 
 ### Introduction:
 In this project, I implemented a calculator program that takes an arithmetic expression as user input and calculates its result. 
