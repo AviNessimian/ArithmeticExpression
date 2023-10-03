@@ -38,10 +38,23 @@ public class Calculator : ICalculator
         for (int i = 0; i < expression.Length; i++)
         {
             var character = expression[i];
-            if (IsAllowedOperatorSymbols(character))
+            if (character == '(')
             {
-                while (operatorsStack.Count > 0 
-                    && GetOrder(operatorsStack.Peek()) >= GetOrder(character))
+                operatorsStack.Push(character);
+            }
+            else if (character == ')')
+            {
+                while (operatorsStack.Peek() != '(')
+                {
+                    ApplyOperation(numbersStack, operatorsStack);
+                }
+
+                // pop ending parenthesis
+                operatorsStack.Pop();
+            }
+            else if (IsAllowedOperatorSymbols(character))
+            {
+                while (operatorsStack.Count > 0 && GetOrder(operatorsStack.Peek()) >= GetOrder(character))
                 {
                     ApplyOperation(numbersStack, operatorsStack);
                 }
